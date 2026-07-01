@@ -1,5 +1,5 @@
 # Predicting the Sex of Palmer Penguins Using GLMs
-Reuben Njue under Dr. Andreas Supervision
+Reuben Njue
 
 ``` r
 pacman::p_load(conflicted,tidyverse,wrappedtools,broom,car,
@@ -17,8 +17,12 @@ set_flextable_defaults(big.mark = " ",
                        padding.top = 3,
                        padding.left = 3,
                        padding.right = 4,
-                       font.family = "sans"
+                       font.family = "sans",
+                       background.color = "#FFFFFF",       # Forces a crisp white background
+                       text.color = "#222222",             # Forces dark charcoal text 
+                       border.color = "#CCCCCC"            # Gives clear light gray grid borders
 )
+
 theme_set(theme_bw())
 theme_update(
   plot.title=element_text(family="sans"),
