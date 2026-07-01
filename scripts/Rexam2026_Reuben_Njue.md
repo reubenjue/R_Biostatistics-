@@ -63,28 +63,28 @@ q1b <- runif(n = 100, min = 18, max = 65)
 sample(18:65, 100, replace = TRUE)
 ```
 
-      [1] 23 40 20 44 34 39 53 44 43 33 64 35 27 50 29 25 54 48 50 37 27 42 21 36 29
-     [26] 39 29 30 54 27 46 21 46 49 39 44 64 45 64 38 42 18 65 62 57 54 39 19 54 27
-     [51] 24 50 43 27 19 50 56 44 33 32 57 30 23 19 53 42 34 44 57 35 48 50 65 52 58
-     [76] 34 37 29 58 65 35 52 58 63 62 50 53 62 57 18 29 50 57 39 61 21 37 61 33 22
+      [1] 63 24 49 24 55 62 45 30 63 19 24 62 26 47 52 59 27 62 28 21 50 44 34 31 20
+     [26] 65 28 54 21 23 40 18 64 22 36 59 48 46 25 54 65 61 21 55 31 28 20 47 52 29
+     [51] 57 34 52 45 63 25 26 19 56 64 47 54 32 55 30 48 65 28 45 65 46 56 55 23 19
+     [76] 52 47 29 35 51 22 28 47 24 43 24 26 44 42 26 42 43 26 44 53 38 52 65 20 46
 
 ``` r
 print(q1b)
 ```
 
-      [1] 40.77914 49.34788 36.73686 43.40712 37.05379 63.26516 35.68160 32.60948
-      [9] 45.89917 57.99030 60.41527 55.16942 54.92449 42.08514 35.15772 26.64934
-     [17] 52.03318 44.75294 54.18172 18.66806 64.33166 48.85854 35.19894 48.85688
-     [25] 36.34632 61.17966 51.94178 38.37959 42.00412 41.41670 27.40487 24.74786
-     [33] 35.65206 23.27502 60.03087 26.24046 49.46547 35.24620 39.48774 19.86285
-     [41] 57.31759 62.81311 26.19281 46.21001 50.72594 33.97881 21.22348 27.37011
-     [49] 26.10305 53.91885 34.86918 60.19458 57.95977 55.65253 51.02999 45.89360
-     [57] 26.44884 26.98388 57.02371 33.68923 30.09786 41.02267 41.96779 22.23110
-     [65] 41.18605 45.92222 41.75432 55.82522 19.90429 57.87417 28.19128 54.54162
-     [73] 61.00305 21.87404 48.76781 46.25148 18.70328 50.61264 30.63222 36.20375
-     [81] 56.53804 22.72464 27.32023 18.17421 47.31539 50.46969 59.46548 39.83201
-     [89] 38.85367 30.91061 58.67488 37.80413 55.22921 28.05004 62.24474 33.90209
-     [97] 22.78888 61.24496 22.93240 54.22047
+      [1] 23.30671 23.89200 64.80920 37.62003 48.73296 32.90680 29.96232 29.52058
+      [9] 33.36809 54.63887 44.64680 53.10153 29.22694 57.16112 22.55820 35.00772
+     [17] 23.70005 33.33406 57.65727 52.41456 58.34599 21.01534 23.47461 60.63228
+     [25] 31.95097 35.36266 61.36227 37.99301 60.32154 23.60234 54.78528 42.60077
+     [33] 56.97280 59.54645 40.77512 52.63283 23.71298 46.09769 35.23650 41.05641
+     [41] 52.25317 21.44048 20.98263 40.94888 38.91472 22.92825 28.57126 46.92057
+     [49] 38.14401 43.01851 30.87221 18.66674 18.42030 28.29608 46.23993 38.03652
+     [57] 50.83783 45.23831 58.64704 46.81940 41.22737 22.81075 25.99895 28.16290
+     [65] 58.77913 62.64152 23.94127 55.83600 31.16410 62.19746 31.55739 22.89561
+     [73] 44.79466 21.90212 62.37639 25.10836 42.62685 53.72271 44.92001 36.85702
+     [81] 21.14317 44.44325 40.70585 52.24085 32.08488 41.91787 40.40234 52.40319
+     [89] 39.59002 22.79367 42.54807 28.24809 60.86199 57.71701 46.16899 20.31364
+     [97] 40.72697 60.84466 56.52158 49.11503
 
 ## Q1c: 50 random numbers from a Normal distribution with mean=100 and SD=15
 
@@ -169,7 +169,7 @@ qqnorm(q1d, main="Q1d Q-Q Plot"); qqline(q1d, col="blue")
 qqnorm(q1e, main="Q1e Q-Q Plot"); qqline(q1e, col="blue")
 ```
 
-![](Rexam2026_Reuben_Njue_files/figure-commonmark/unnamed-chunk-8-1.png)
+![](Rexam2026_Reuben_Njue_files/figure-commonmark/unnamed-chunk-8-2.png)
 
 ``` r
 par(mfrow = c(1, 1))
@@ -203,7 +203,7 @@ gg_plot <- ggplot(df_long, aes(x = Value)) +
 print(gg_plot)
 ```
 
-![](Rexam2026_Reuben_Njue_files/figure-commonmark/unnamed-chunk-8-2.png)
+![](Rexam2026_Reuben_Njue_files/figure-commonmark/unnamed-chunk-8-3.png)
 
 ``` r
 table_output <- df_long |>
@@ -219,34 +219,25 @@ table_output <- df_long |>
       "Fail to reject H0: Normally Distributed"
     )
   ) |>
-  flextable() |>
-  set_header_labels(
+  flextable() |>                     # 1. Initialize flextable
+  theme_vanilla() |>                  # 2. Apply theme FIRST so it doesn't wipe changes
+  set_header_labels(                 # 3. Change header labels
     Sequence = "Sequence Group",
     Sample_Size = "Sample Size (n)",
     p_value = "Shapiro-Wilk (p-value)",
     Interpretation = "Normality Decision"
   ) |>
-  colformat_double(j = "p_value", digits = 4) |> 
-  autofit() |>
-  theme_vanilla() |>
-  bg(i = ~ p_value < 0.05, j = "Interpretation", bg = "#FFCCCC") |> 
-  bg(i = ~ p_value >= 0.05, j = "Interpretation", bg = "#E2F0D9")
-
-print(table_output)
+  colformat_double(j = "p_value", digits = 4) |>  # 4. Format numbers
+  bg(i = ~ p_value < 0.05, j = "Interpretation", bg = "#FFCCCC") |>   # 5. Apply colors
+  bg(i = ~ p_value >= 0.05, j = "Interpretation", bg = "#E2F0D9") |> 
+  autofit() # 6. Apply dimensions last
+  knitr::knit_print(table_output) 
 ```
 
-    a flextable object.
-    col_keys: `Sequence`, `Sample_Size`, `p_value`, `Interpretation` 
-    header has 1 row(s) 
-    body has 5 row(s) 
-    original dataset sample: 
-    'data.frame':   5 obs. of  4 variables:
-     $ Sequence      : chr  "q1a: Descending" "q1b: Uniform" "q1c: Normal" "q1d: Poisson" ...
-     $ Sample_Size   : int  51 100 50 20 6
-     $ p_value       : num  0.053885 0.000487 0.032128 0.051094 0.668618
-     $ Interpretation: chr  "Fail to reject H0: Normally Distributed" "Reject H0: Not Normally Distributed" "Reject H0: Not Normally Distributed" "Fail to reject H0: Normally Distributed" ...
+![](Rexam2026_Reuben_Njue_files/figure-commonmark/unnamed-chunk-8-1.png)
 
 ``` r
+#print(table_output)
 #AB your seed resulted in a non-normal sample from rnorm(), in such a case choose a different seed!
 ```
 
