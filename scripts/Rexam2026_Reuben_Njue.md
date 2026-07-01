@@ -2,14 +2,6 @@
 Reuben Njue
 
 ``` {r}
-pacman::p_load(conflicted,tidyverse,wrappedtools,broom,car,
-               palmerpenguins,
-               rlist, flextable,
-               patchwork, ggbeeswarm, ggsignif, 
-               rpart, rpart.plot, pROC)
-conflicts_prefer(dplyr::filter, 
-                 dplyr::select,
-                 palmerpenguins::penguins)
 set_flextable_defaults(big.mark = " ", 
                        font.size = 9, 
                        theme_fun = theme_vanilla,
@@ -49,35 +41,40 @@ Please format text answers as comments or put them in text parts.
 ``` {r}
 
 (q1a <- 95:45)
-(q1a <- seq(95,45, -1))
+#or
+q1a <- seq(95,45, -1)
+print(q1a)
 ```
 
 ## Q1b: 100 random numbers from a uniform distribution with minimum=18 and maximum=65
 
 ``` {r}
-(q1b <- runif(n = 100, min = 18, max = 65))
+q1b <- runif(n = 100, min = 18, max = 65)
 sample(18:65, 100, replace = TRUE)
+print(q1b)
 ```
 
 ## Q1c: 50 random numbers from a Normal distribution with mean=100 and SD=15
 
 ``` {r}
 set.seed(42)
-(q1c <- rnorm(n = 50, mean = 100, sd = sqrt(15)))
-#AB 15 is already SD, not variance!!
+q1c <- rnorm(n = 50, mean = 100, sd = sqrt(15))
+print(q1c)
 ```
 
 ## Q1d: 20 random numbers from a Poisson distribution with lambda=3
 
 ``` {r}
-(q1d <- rpois(n= 20, lambda = 3))
+q1d <- rpois(n= 20, lambda = 3)
+print(q1d)
 ```
 
 ## Q1e: 6 Lotto numbers (unique, uniform distribution) between 1 and 49 (“6 aus 49”).
 
 ``` {r}
 
-(q1e <- sample(x = 1:49, size = 6, replace = FALSE))
+q1e <- sample(x = 1:49, size = 6, replace = FALSE)
+print(q1e)
 ```
 
 ## Q2: Test all the various numbers you generated in Q1 against the Normal distribution: Plot distributions and create a table structure with the p-values and your interpretation (3 pts)
@@ -346,7 +343,8 @@ glht_out <- summary(glht(
 
 summary(glht_out)
 tidy(glht_out) |>
-  flextable()
+  flextable() |>
+  theme_vanilla()
 ```
 
 \#Results from anaylsis
@@ -376,11 +374,11 @@ desc_stat <- rawdata |>
   summarise(
     N_years = n(),
     MeanSD_Temp = meansd(temperature),
-    MeanSD_Rain = meansd(rain),
-  ) #|>
-  #flextable()
-
-print(desc_stat)
+    MeanSD_Rain = meansd(rain)
+  )
+desc_stat |> 
+  flextable() |> 
+  theme_vanilla()
 ```
 
 ## Q5e: Export that table into a text file with a ‘;’ as separator
