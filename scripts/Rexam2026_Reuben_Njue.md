@@ -1,7 +1,12 @@
 # Exam Statistics 2026_1
 Reuben Njue
 
-``` {r}
+``` r
+#any packages needed? put them here!
+pacman::p_load(conflicted, tidyverse, wrappedtools, flextable, dplyr, ggplot2, ggpubr, ggbeeswarm, multcomp, broom, stats)
+```
+
+``` r
 set_flextable_defaults(big.mark = " ", 
                        font.size = 9, 
                        theme_fun = theme_vanilla,
@@ -24,11 +29,6 @@ theme_update(
   strip.text=element_text(family="sans"))
 ```
 
-``` {r}
-#any packages needed? put them here!
-pacman::p_load(conflicted, tidyverse, wrappedtools, flextable, dplyr, ggplot2, ggpubr, ggbeeswarm, multcomp, broom, stats)
-```
-
 Please give your answers underneath the question, referencing question
 numbers.
 
@@ -38,48 +38,92 @@ Please format text answers as comments or put them in text parts.
 
 ## Q1a: Integers between 95 and 45 in descending order, including borders
 
-``` {r}
-
+``` r
 (q1a <- 95:45)
+```
+
+     [1] 95 94 93 92 91 90 89 88 87 86 85 84 83 82 81 80 79 78 77 76 75 74 73 72 71
+    [26] 70 69 68 67 66 65 64 63 62 61 60 59 58 57 56 55 54 53 52 51 50 49 48 47 46
+    [51] 45
+
+``` r
 #or
 q1a <- seq(95,45, -1)
 print(q1a)
 ```
 
+     [1] 95 94 93 92 91 90 89 88 87 86 85 84 83 82 81 80 79 78 77 76 75 74 73 72 71
+    [26] 70 69 68 67 66 65 64 63 62 61 60 59 58 57 56 55 54 53 52 51 50 49 48 47 46
+    [51] 45
+
 ## Q1b: 100 random numbers from a uniform distribution with minimum=18 and maximum=65
 
-``` {r}
+``` r
 q1b <- runif(n = 100, min = 18, max = 65)
 sample(18:65, 100, replace = TRUE)
+```
+
+      [1] 23 40 20 44 34 39 53 44 43 33 64 35 27 50 29 25 54 48 50 37 27 42 21 36 29
+     [26] 39 29 30 54 27 46 21 46 49 39 44 64 45 64 38 42 18 65 62 57 54 39 19 54 27
+     [51] 24 50 43 27 19 50 56 44 33 32 57 30 23 19 53 42 34 44 57 35 48 50 65 52 58
+     [76] 34 37 29 58 65 35 52 58 63 62 50 53 62 57 18 29 50 57 39 61 21 37 61 33 22
+
+``` r
 print(q1b)
 ```
 
+      [1] 40.77914 49.34788 36.73686 43.40712 37.05379 63.26516 35.68160 32.60948
+      [9] 45.89917 57.99030 60.41527 55.16942 54.92449 42.08514 35.15772 26.64934
+     [17] 52.03318 44.75294 54.18172 18.66806 64.33166 48.85854 35.19894 48.85688
+     [25] 36.34632 61.17966 51.94178 38.37959 42.00412 41.41670 27.40487 24.74786
+     [33] 35.65206 23.27502 60.03087 26.24046 49.46547 35.24620 39.48774 19.86285
+     [41] 57.31759 62.81311 26.19281 46.21001 50.72594 33.97881 21.22348 27.37011
+     [49] 26.10305 53.91885 34.86918 60.19458 57.95977 55.65253 51.02999 45.89360
+     [57] 26.44884 26.98388 57.02371 33.68923 30.09786 41.02267 41.96779 22.23110
+     [65] 41.18605 45.92222 41.75432 55.82522 19.90429 57.87417 28.19128 54.54162
+     [73] 61.00305 21.87404 48.76781 46.25148 18.70328 50.61264 30.63222 36.20375
+     [81] 56.53804 22.72464 27.32023 18.17421 47.31539 50.46969 59.46548 39.83201
+     [89] 38.85367 30.91061 58.67488 37.80413 55.22921 28.05004 62.24474 33.90209
+     [97] 22.78888 61.24496 22.93240 54.22047
+
 ## Q1c: 50 random numbers from a Normal distribution with mean=100 and SD=15
 
-``` {r}
+``` r
 set.seed(42)
 q1c <- rnorm(n = 50, mean = 100, sd = sqrt(15))
 print(q1c)
 ```
 
+     [1] 105.30970  97.81293 101.40639 102.45107 101.56572  99.58898 105.85410
+     [8]  99.63339 107.81732  99.75711 105.05374 108.85614  94.62097  98.92026
+    [15]  99.48365 102.46303  98.89909  89.71159  90.54811 105.11278  98.81239
+    [22]  93.10102  99.33417 104.70441 107.34005  98.33280  99.00360  93.17130
+    [29] 101.78195  97.52131 101.76395 102.72982 104.00894  97.64164 101.95568
+    [36]  93.35005  96.96180  96.70445  90.64981 100.13990 100.79783  98.60163
+    [43] 102.93635  97.18548  94.70067 101.67630  96.85749 105.59298  98.32902
+    [50] 102.53931
+
 ## Q1d: 20 random numbers from a Poisson distribution with lambda=3
 
-``` {r}
+``` r
 q1d <- rpois(n= 20, lambda = 3)
 print(q1d)
 ```
 
+     [1] 3 2 2 2 6 6 4 4 3 0 3 5 4 3 3 3 0 2 3 5
+
 ## Q1e: 6 Lotto numbers (unique, uniform distribution) between 1 and 49 (“6 aus 49”).
 
-``` {r}
-
+``` r
 q1e <- sample(x = 1:49, size = 6, replace = FALSE)
 print(q1e)
 ```
 
+    [1] 19 32 16 29 17 44
+
 ## Q2: Test all the various numbers you generated in Q1 against the Normal distribution: Plot distributions and create a table structure with the p-values and your interpretation (3 pts)
 
-``` {r}
+``` r
 set.seed(42)
 #data. Not necessary to recrete. 
 q1a <- 45:95
@@ -123,6 +167,11 @@ qqnorm(q1b, main="Q1b Q-Q Plot"); qqline(q1b, col="blue")
 qqnorm(q1c, main="Q1c Q-Q Plot"); qqline(q1c, col="blue")
 qqnorm(q1d, main="Q1d Q-Q Plot"); qqline(q1d, col="blue")
 qqnorm(q1e, main="Q1e Q-Q Plot"); qqline(q1e, col="blue")
+```
+
+![](Rexam2026_Reuben_Njue_files/figure-commonmark/unnamed-chunk-8-1.png)
+
+``` r
 par(mfrow = c(1, 1))
 
 
@@ -151,8 +200,12 @@ gg_plot <- ggplot(df_long, aes(x = Value)) +
     y = "Density"
   ) +
   theme(strip.background = element_rect(fill = "gray95", color = NA))
-gg_plot
+print(gg_plot)
+```
 
+![](Rexam2026_Reuben_Njue_files/figure-commonmark/unnamed-chunk-8-2.png)
+
+``` r
 table_output <- df_long |>
   group_by(Sequence) |>
   summarise(
@@ -179,7 +232,21 @@ table_output <- df_long |>
   bg(i = ~ p_value < 0.05, j = "Interpretation", bg = "#FFCCCC") |> 
   bg(i = ~ p_value >= 0.05, j = "Interpretation", bg = "#E2F0D9")
 
-table_output
+print(table_output)
+```
+
+    a flextable object.
+    col_keys: `Sequence`, `Sample_Size`, `p_value`, `Interpretation` 
+    header has 1 row(s) 
+    body has 5 row(s) 
+    original dataset sample: 
+    'data.frame':   5 obs. of  4 variables:
+     $ Sequence      : chr  "q1a: Descending" "q1b: Uniform" "q1c: Normal" "q1d: Poisson" ...
+     $ Sample_Size   : int  51 100 50 20 6
+     $ p_value       : num  0.053885 0.000487 0.032128 0.051094 0.668618
+     $ Interpretation: chr  "Fail to reject H0: Normally Distributed" "Reject H0: Not Normally Distributed" "Reject H0: Not Normally Distributed" "Fail to reject H0: Normally Distributed" ...
+
+``` r
 #AB your seed resulted in a non-normal sample from rnorm(), in such a case choose a different seed!
 ```
 
@@ -266,23 +333,43 @@ Info on dataset:
 
 ## Q5a: Program the import into a variable and save (“pick” / address) the first 5 rows from columns rain and quality in a *separate* variable. Analyses with all rows!
 
-``` {r}
+``` r
 rawdata <- readxl::read_xlsx("bordeaux.xlsx")
 str(rawdata)
+```
 
+    tibble [34 × 6] (S3: tbl_df/tbl/data.frame)
+     $ year       : num [1:34] 1924 1925 1926 1927 1928 ...
+     $ temperature: num [1:34] 3064 3000 3155 3085 3245 ...
+     $ sun        : num [1:34] 1201 1053 1133 970 1258 ...
+     $ heat       : num [1:34] 10 11 19 4 36 35 13 12 14 29 ...
+     $ rain       : num [1:34] 361 338 393 467 294 225 417 488 677 427 ...
+     $ quality    : chr [1:34] "medium" "bad" "medium" "bad" ...
 
+``` r
 #First 5 rows from columns rain and quality 
 rain_qlty <- rawdata[1:5, c ("rain", "quality")]
 rain_qlty
+```
 
+    # A tibble: 5 × 2
+       rain quality
+      <dbl> <chr>  
+    1   361 medium 
+    2   338 bad    
+    3   393 medium 
+    4   467 bad    
+    5   294 good   
+
+``` r
 #converting quality to Factor for Q5c
 rawdata$quality <- factor(rawdata$quality, levels = c("bad", "medium", "good"))
 ```
 
 ## Q5b: Create a box plot for rain level, grouped by quality, using ggplot. Try to use a reasonable order of quality levels
 
-``` {r}
-ggplot(rawdata, aes(x = quality, y = rain, fill = quality)) +
+``` r
+ggplot_1 = ggplot(rawdata, aes(x = quality, y = rain, fill = quality)) +
   geom_boxplot(alpha = 0.7, outlier.color = "red", outlier.shape = 16) +
   scale_fill_manual(values = c("#FF9999", "#FFCC99", "#99FF99")) +
   theme_minimal(base_size = 14) +
@@ -292,8 +379,12 @@ ggplot(rawdata, aes(x = quality, y = rain, fill = quality)) +
     y = "Rain Level (in mm)"
   ) +
   theme(legend.position = "none")
+print(ggplot_1)
+```
 
+![](Rexam2026_Reuben_Njue_files/figure-commonmark/unnamed-chunk-10-1.png)
 
+``` r
 #EVEN BETER 
 my_comparisons <- list( 
   c("bad", "medium"), 
@@ -301,7 +392,7 @@ my_comparisons <- list(
   c("bad", "good") 
 )
 
-ggplot(rawdata, aes(x = quality, y = rain, fill = quality)) +
+ggplot_2 = ggplot(rawdata, aes(x = quality, y = rain, fill = quality)) +
   geom_boxplot(alpha = 0.5, outlier.shape = NA, color = "grey30") +
   geom_beeswarm(aes(color = quality), cex =2, size = 2.5, alpha = 0.8, priority = "density") +
   scale_fill_manual(values = c("#FF9999", "#FFCC99", "#99FF99")) +
@@ -321,7 +412,10 @@ ggplot(rawdata, aes(x = quality, y = rain, fill = quality)) +
     y = "Rain Level (in mm)"
   ) +
   theme(legend.position = "none")
+print(ggplot_2)
 ```
+
+![](Rexam2026_Reuben_Njue_files/figure-commonmark/unnamed-chunk-10-2.png)
 
 ## Q5c: Test, if (and which specifically) group differences you observe in Q5b could be a chance outcome, formulate the appropriate Null hypothesis. (Keep in mind that ‘*dependent variable*’ does not imply *causality*).
 
@@ -329,23 +423,60 @@ H0​: μ bad​ = μ medium​ = μ good​. The mean rain levels are the same
 wines of bad, medium and good quality. Any observed group differences is
 entirely due to random chance.
 
-``` {r}
+``` r
 anova_model <- lm(rain ~ quality, data = rawdata)
 anova_out <- anova(anova_model)
 print(anova_out)
+```
+
+    Analysis of Variance Table
+
+    Response: rain
+              Df Sum Sq Mean Sq F value   Pr(>F)   
+    quality    2  97191   48596  8.4396 0.001185 **
+    Residuals 31 178499    5758                    
+    ---
+    Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+``` r
 anova_out$`Pr(>F)`
+```
 
+    [1] 0.001185298          NA
 
+``` r
 # post-hoc: Tukey
 glht_out <- summary(glht(
   model = anova_model,
   linfct = mcp(quality = "Tukey")))
 
 summary(glht_out)
+```
+
+
+         Simultaneous Tests for General Linear Hypotheses
+
+    Multiple Comparisons of Means: Tukey Contrasts
+
+
+    Fit: lm(formula = rain ~ quality, data = rawdata)
+
+    Linear Hypotheses:
+                       Estimate Std. Error t value Pr(>|t|)   
+    medium - bad == 0    -90.70      31.67  -2.863  0.01985 * 
+    good - bad == 0     -125.33      31.67  -3.957  0.00117 **
+    good - medium == 0   -34.64      32.36  -1.070  0.53914   
+    ---
+    Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+    (Adjusted p values reported -- single-step method)
+
+``` r
 tidy(glht_out) |>
   flextable() |>
   theme_vanilla()
 ```
+
+![](Rexam2026_Reuben_Njue_files/figure-commonmark/unnamed-chunk-11-1.png)
 
 \#Results from anaylsis
 
@@ -368,7 +499,7 @@ that accompany rainy weather.
 
 ## Q5d: Create a report table with descriptive statistics for temperature and rain for the levels of quality.
 
-``` {r}
+``` r
 desc_stat <- rawdata |>
   group_by(quality) |>
   summarise(
@@ -381,9 +512,11 @@ desc_stat |>
   theme_vanilla()
 ```
 
+![](Rexam2026_Reuben_Njue_files/figure-commonmark/unnamed-chunk-12-1.png)
+
 ## Q5e: Export that table into a text file with a ‘;’ as separator
 
-``` {r}
+``` r
 write.table(
   x = desc_stat, 
   file = "rawdata_quality_summary.txt", 
@@ -400,7 +533,7 @@ write.table(
 - Put your first name in row 2 column 2 and your family name in row 2
   column 3
 
-``` {r}
+``` r
 participants <- matrix(data = NA, nrow = 20, ncol = 3, byrow = FALSE)
 participants[, 1] <- paste("Participant", 1:20)
 participants[2, 2] <- "Reuben Mukundi"
@@ -408,9 +541,31 @@ participants[2, 3] <- "Njue"
 print(participants)
 ```
 
+          [,1]             [,2]             [,3]  
+     [1,] "Participant 1"  NA               NA    
+     [2,] "Participant 2"  "Reuben Mukundi" "Njue"
+     [3,] "Participant 3"  NA               NA    
+     [4,] "Participant 4"  NA               NA    
+     [5,] "Participant 5"  NA               NA    
+     [6,] "Participant 6"  NA               NA    
+     [7,] "Participant 7"  NA               NA    
+     [8,] "Participant 8"  NA               NA    
+     [9,] "Participant 9"  NA               NA    
+    [10,] "Participant 10" NA               NA    
+    [11,] "Participant 11" NA               NA    
+    [12,] "Participant 12" NA               NA    
+    [13,] "Participant 13" NA               NA    
+    [14,] "Participant 14" NA               NA    
+    [15,] "Participant 15" NA               NA    
+    [16,] "Participant 16" NA               NA    
+    [17,] "Participant 17" NA               NA    
+    [18,] "Participant 18" NA               NA    
+    [19,] "Participant 19" NA               NA    
+    [20,] "Participant 20" NA               NA    
+
 # Q7: Program a loop that runs along the rows of matrix from Q6 and that prints the run number and the first name; if there is no name, state “missing”. (2 pts)
 
-``` {r}
+``` r
 for (i in 1:nrow(participants)) {
   first_name <- participants[i, 2]
   if (first_name == "" || is.na(first_name)) {
@@ -421,6 +576,27 @@ for (i in 1:nrow(participants)) {
   cat("Run number:", i, "-> First Name:", display_name, "\n")
 }
 ```
+
+    Run number: 1 -> First Name: missing 
+    Run number: 2 -> First Name: Reuben Mukundi 
+    Run number: 3 -> First Name: missing 
+    Run number: 4 -> First Name: missing 
+    Run number: 5 -> First Name: missing 
+    Run number: 6 -> First Name: missing 
+    Run number: 7 -> First Name: missing 
+    Run number: 8 -> First Name: missing 
+    Run number: 9 -> First Name: missing 
+    Run number: 10 -> First Name: missing 
+    Run number: 11 -> First Name: missing 
+    Run number: 12 -> First Name: missing 
+    Run number: 13 -> First Name: missing 
+    Run number: 14 -> First Name: missing 
+    Run number: 15 -> First Name: missing 
+    Run number: 16 -> First Name: missing 
+    Run number: 17 -> First Name: missing 
+    Run number: 18 -> First Name: missing 
+    Run number: 19 -> First Name: missing 
+    Run number: 20 -> First Name: missing 
 
 # 
 
