@@ -1420,7 +1420,7 @@ ggplot(rawdata2, aes(body_mass_g, bill_depth_mm)) +
 ![](descriptive_penguins_files/figure-commonmark/unnamed-chunk-32-1.png)
 
 ``` r
-#Everything looks ambigious and shows alread negative linear relation due to double clustering (due to species effect) as shown by linear regression line
+#Everything looks ambigious and shows alread negative linear relation due to double clustering (due to species effect) as shown by linear regression line :: SIMPSON PARADOX it is!!!! solvable by later models like glm 
 #this is misleading since clustering shows otherwise (loes line)
 #I need to account for species effect, thus filter by and model by species 
 # Model
@@ -2013,9 +2013,9 @@ species_tukey
 
     Linear Hypotheses:
                             Estimate Std. Error t value Pr(>|t|)    
-    Chinstrap - Adelie == 0   5.7208     0.8407   6.805   <1e-09 ***
-    Gentoo - Adelie == 0     27.0462     0.7072  38.243   <1e-09 ***
-    Gentoo - Chinstrap == 0  21.3254     0.8705  24.498   <1e-09 ***
+    Chinstrap - Adelie == 0   5.7208     0.8407   6.805   <1e-10 ***
+    Gentoo - Adelie == 0     27.0462     0.7072  38.243   <1e-10 ***
+    Gentoo - Chinstrap == 0  21.3254     0.8705  24.498   <1e-10 ***
     ---
     Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
     (Adjusted p values reported -- single-step method)
@@ -2024,9 +2024,9 @@ species_tukey
 species_tukey$test$pvalues
 ```
 
-    [1] 2.031877e-10 0.000000e+00 0.000000e+00
+    [1] 7.662637e-11 0.000000e+00 0.000000e+00
     attr(,"error")
-    [1] 3.68515e-10
+    [1] 3.462412e-11
 
 ``` r
 tidy(species_tukey) |>
@@ -2036,7 +2036,7 @@ tidy(species_tukey) |>
     # A tibble: 3 × 6
       term    contrast           estimate std.error statistic adj.p.value
       <chr>   <chr>                 <dbl>     <dbl>     <dbl>       <dbl>
-    1 species Chinstrap - Adelie     5.72     0.841      6.80    2.03e-10
+    1 species Chinstrap - Adelie     5.72     0.841      6.80    7.66e-11
     2 species Gentoo - Adelie       27.0      0.707     38.2     0       
     3 species Gentoo - Chinstrap    21.3      0.870     24.5     0       
 
@@ -2057,9 +2057,9 @@ summary(glht(
 
     Linear Hypotheses:
                             Estimate Std. Error t value Pr(>|t|)    
-    Chinstrap - Adelie == 0   5.7208     0.8407   6.805   <1e-09 ***
-    Gentoo - Adelie == 0     27.0462     0.7072  38.243   <1e-09 ***
-    Gentoo - Chinstrap == 0  21.3254     0.8705  24.498   <1e-09 ***
+    Chinstrap - Adelie == 0   5.7208     0.8407   6.805   <1e-10 ***
+    Gentoo - Adelie == 0     27.0462     0.7072  38.243   <1e-10 ***
+    Gentoo - Chinstrap == 0  21.3254     0.8705  24.498   <1e-10 ***
     ---
     Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
     (Adjusted p values reported -- single-step method)
@@ -2223,9 +2223,9 @@ species_tukey2
 species_tukey2$test$pvalues
 ```
 
-    [1] 0.8193354 0.0000000 0.0000000
+    [1] 0.8193442 0.0000000 0.0000000
     attr(,"error")
-    [1] 4.717883e-06
+    [1] 5.613579e-06
 
 ``` r
 tidy(species_tukey2) |>
@@ -2456,9 +2456,9 @@ tidy(species_tukey3) |> select(-null.value)
     # A tibble: 3 × 6
       term    contrast           estimate std.error statistic adj.p.value
       <chr>   <chr>                 <dbl>     <dbl>     <dbl>       <dbl>
-    1 species Chinstrap - Adelie     5.54     0.785      7.06    1.86e-11
+    1 species Chinstrap - Adelie     5.54     0.785      7.06    1.78e-11
     2 species Gentoo - Adelie       18.0      1.44      12.5     0       
-    3 species Gentoo - Chinstrap    12.5      1.50       8.33    5.33e-15
+    3 species Gentoo - Chinstrap    12.5      1.50       8.33    5.11e-15
 
 ``` r
 # Tukey Pairwise Comparisons for Sex (adjusted for Species)
