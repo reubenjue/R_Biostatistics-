@@ -14,15 +14,26 @@ conflicts_prefer(dplyr::summarize,
                  dplyr::filter,
                  dplyr::select,
                  modelbased::standardize)
-set_flextable_defaults(big.mark = " ",
-                       font.size = 7,
-                       theme_fun = theme_zebra,
-                       padding.bottom = 1,
-                       padding.top = 1,
+set_flextable_defaults(big.mark = " ", 
+                       font.size = 9, 
+                       theme_fun = theme_vanilla,
+                       padding.bottom = 1, 
+                       padding.top = 3,
                        padding.left = 3,
-                       padding.right = 4
+                       padding.right = 4,
+                       font.family = "sans",
+                       background.color = "#FFFFFF",       # Forces a crisp white background
+                       text.color = "#222222",             # Forces dark charcoal text 
+                       border.color = "#CCCCCC"            # Gives clear light gray grid borders
 )
+
 theme_set(theme_bw())
+theme_update(
+  plot.title=element_text(family="sans"),
+  plot.caption=element_text(family="sans"),
+  axis.title=element_text(family="sans"),
+  axis.text=element_text(family="sans",face = "bold"),
+  strip.text=element_text(family="sans"))
 ```
 
 
@@ -316,7 +327,7 @@ tests on their independence.
 
 # Gaussian Comparison (Parametric)
 
-\#Solution from teacher
+\#Solution
 
 ``` r
 rawdata <- penguins |>
@@ -329,7 +340,7 @@ ord_vars <- ColSeeker(Adelies, "_")
 fact_vars <- ColSeeker(rawdata, varclass = "factor")
 ```
 
-\#Solution from teacher Gaussian
+\#Solution Gaussian
 
 ``` r
 summary_plot <- Adelies |>
@@ -425,7 +436,7 @@ cat("&nbsp;\n\n")
 
     &nbsp;
 
-comparison of 2 species \#solution from teacher: Gaussian
+comparison of 2 species \#solution Gaussian
 
 ``` r
 rawdata |>
@@ -450,7 +461,7 @@ cat("&nbsp;\n\n")
 
     &nbsp;
 
-\#Solution from teacher :Ordinal
+\#Solution : Ordinal
 
 ``` r
 ord_results <- compare2numvars(Adelies,
@@ -469,7 +480,7 @@ cat("<br>\n\n")
 
     <br>
 
-\#Solution from teacher :Ordinal
+\#Solution : Ordinal
 
 ``` r
 for(row_i in seq_along(ord_results$Variable)){
@@ -751,7 +762,7 @@ chisq.test(year_species_table)
     data:  year_species_table
     X-squared = 3.2156, df = 4, p-value = 0.5224
 
-\#Teachers solution categorical variables \## single variable
+\#Solution categorical variables \## single variable
 
 ``` r
 ggplot(Adelies, aes(sex, fill=island))+
@@ -2002,9 +2013,9 @@ species_tukey
 
     Linear Hypotheses:
                             Estimate Std. Error t value Pr(>|t|)    
-    Chinstrap - Adelie == 0   5.7208     0.8407   6.805 1.23e-10 ***
-    Gentoo - Adelie == 0     27.0462     0.7072  38.243  < 1e-10 ***
-    Gentoo - Chinstrap == 0  21.3254     0.8705  24.498  < 1e-10 ***
+    Chinstrap - Adelie == 0   5.7208     0.8407   6.805   <1e-09 ***
+    Gentoo - Adelie == 0     27.0462     0.7072  38.243   <1e-09 ***
+    Gentoo - Chinstrap == 0  21.3254     0.8705  24.498   <1e-09 ***
     ---
     Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
     (Adjusted p values reported -- single-step method)
@@ -2013,9 +2024,9 @@ species_tukey
 species_tukey$test$pvalues
 ```
 
-    [1] 1.230673e-10 0.000000e+00 0.000000e+00
+    [1] 2.031877e-10 0.000000e+00 0.000000e+00
     attr(,"error")
-    [1] 9.043215e-11
+    [1] 3.68515e-10
 
 ``` r
 tidy(species_tukey) |>
@@ -2025,7 +2036,7 @@ tidy(species_tukey) |>
     # A tibble: 3 × 6
       term    contrast           estimate std.error statistic adj.p.value
       <chr>   <chr>                 <dbl>     <dbl>     <dbl>       <dbl>
-    1 species Chinstrap - Adelie     5.72     0.841      6.80    1.23e-10
+    1 species Chinstrap - Adelie     5.72     0.841      6.80    2.03e-10
     2 species Gentoo - Adelie       27.0      0.707     38.2     0       
     3 species Gentoo - Chinstrap    21.3      0.870     24.5     0       
 
@@ -2046,9 +2057,9 @@ summary(glht(
 
     Linear Hypotheses:
                             Estimate Std. Error t value Pr(>|t|)    
-    Chinstrap - Adelie == 0   5.7208     0.8407   6.805   <1e-10 ***
-    Gentoo - Adelie == 0     27.0462     0.7072  38.243   <1e-10 ***
-    Gentoo - Chinstrap == 0  21.3254     0.8705  24.498   <1e-10 ***
+    Chinstrap - Adelie == 0   5.7208     0.8407   6.805   <1e-09 ***
+    Gentoo - Adelie == 0     27.0462     0.7072  38.243   <1e-09 ***
+    Gentoo - Chinstrap == 0  21.3254     0.8705  24.498   <1e-09 ***
     ---
     Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
     (Adjusted p values reported -- single-step method)
@@ -2212,9 +2223,9 @@ species_tukey2
 species_tukey2$test$pvalues
 ```
 
-    [1] 0.8193401 0.0000000 0.0000000
+    [1] 0.8193354 0.0000000 0.0000000
     attr(,"error")
-    [1] 9.011802e-06
+    [1] 4.717883e-06
 
 ``` r
 tidy(species_tukey2) |>
@@ -2445,9 +2456,9 @@ tidy(species_tukey3) |> select(-null.value)
     # A tibble: 3 × 6
       term    contrast           estimate std.error statistic adj.p.value
       <chr>   <chr>                 <dbl>     <dbl>     <dbl>       <dbl>
-    1 species Chinstrap - Adelie     5.54     0.785      7.06    2.04e-11
+    1 species Chinstrap - Adelie     5.54     0.785      7.06    1.86e-11
     2 species Gentoo - Adelie       18.0      1.44      12.5     0       
-    3 species Gentoo - Chinstrap    12.5      1.50       8.33    4.55e-15
+    3 species Gentoo - Chinstrap    12.5      1.50       8.33    5.33e-15
 
 ``` r
 # Tukey Pairwise Comparisons for Sex (adjusted for Species)
